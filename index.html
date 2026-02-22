@@ -136,7 +136,7 @@ body::before {
 .nav-link::after {
   content: '';
   position: absolute; bottom: 0; left: 22px; right: 22px;
-  height: 2px; background: var(--lime);
+  height: 2px; background: var(--green-l);
   transform: scaleX(0); transform-origin: left;
   transition: transform 0.3s var(--ease);
 }
@@ -214,7 +214,7 @@ body::before {
 .hero-glow {
   position: absolute;
   width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(0,255,65,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,146,42,0.09) 0%, transparent 70%);
   top: -200px; right: -100px;
   animation: glowPulse 6s ease-in-out infinite;
 }
@@ -229,7 +229,7 @@ body::before {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 52vw; line-height: 0.75;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(0,255,65,0.05);
+  -webkit-text-stroke: 1px rgba(201,146,42,0.06);
   right: -4vw; bottom: -4vw;
   pointer-events: none; user-select: none;
   letter-spacing: -2vw;
@@ -250,15 +250,15 @@ body::before {
 }
 .hero-eyebrow-badge {
   display: flex; align-items: center; gap: 8px;
-  background: rgba(0,255,65,0.08);
-  border: 1px solid rgba(0,255,65,0.2);
+  background: rgba(201,146,42,0.1);
+  border: 1px solid rgba(201,146,42,0.3);
   padding: 6px 14px;
   font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--lime); font-weight: 700;
+  color: var(--gold-l); font-weight: 700;
 }
 .live-dot {
   width: 6px; height: 6px;
-  background: var(--lime); border-radius: 50%;
+  background: var(--gold-l); border-radius: 50%;
   animation: livePulse 1.8s ease-in-out infinite;
 }
 @keyframes livePulse {
@@ -275,7 +275,7 @@ body::before {
   margin-bottom: 36px;
 }
 .hero-title .line-accent {
-  color: var(--lime);
+  color: var(--gold);
   display: block;
 }
 .hero-title .line-dim {
@@ -293,7 +293,7 @@ body::before {
 
 .btn-lime {
   display: inline-flex; align-items: center; gap: 10px;
-  background: var(--lime); color: #000;
+  background: var(--green); color: #fff;
   padding: 15px 32px;
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800;
   border: none; cursor: pointer;
@@ -301,7 +301,7 @@ body::before {
   transition: all 0.2s;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
 }
-.btn-lime:hover { background: #fff; transform: translateY(-2px); }
+.btn-lime:hover { background: var(--green-l); transform: translateY(-2px); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 10px;
@@ -534,7 +534,7 @@ body::before {
 .section-hd .rule { flex: 1; height: 1px; background: var(--border); }
 .section-hd a, .section-hd button {
   font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--lime); text-decoration: none; font-weight: 700;
+  color: var(--gold-l); text-decoration: none; font-weight: 700;
   background: none; border: none; cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -558,10 +558,10 @@ body::before {
 }
 .page-eyebrow {
   font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--lime); font-weight: 700; margin-bottom: 16px;
+  color: var(--gold-l); font-weight: 700; margin-bottom: 16px;
   display: flex; align-items: center; gap: 12px;
 }
-.page-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--lime); }
+.page-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold-l); }
 .page-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 72px; font-weight: 900; text-transform: uppercase;
@@ -675,11 +675,11 @@ body::before {
   border-bottom: 3px solid transparent; transition: border-color 0.2s;
   cursor: pointer; position: relative; overflow: hidden;
 }
-.acad-card:hover { border-bottom-color: var(--lime); }
+.acad-card:hover { border-bottom-color: var(--green-l); }
 .acad-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, var(--lime), transparent);
+  background: linear-gradient(to right, var(--green-l), transparent);
   opacity: 0; transition: opacity 0.3s;
 }
 .acad-card:hover::before { opacity: 1; }
@@ -693,7 +693,7 @@ body::before {
 }
 .acad-card-body { font-size: 13px; line-height: 1.7; color: var(--muted); }
 .acad-card-link {
-  font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--lime);
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-l);
   font-weight: 700; margin-top: auto; text-decoration: none; display: flex; align-items: center; gap: 8px;
 }
 .acad-card-link::after { content: '→'; transition: transform 0.2s; }
@@ -726,7 +726,7 @@ body::before {
   border: 2px solid var(--border);
   transition: border-color 0.2s, background 0.2s;
 }
-.timeline-item:hover::before { border-color: var(--lime); background: var(--lime); }
+.timeline-item:hover::before { border-color: var(--green-l); background: var(--green-l); }
 .timeline-year {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 42px; color: var(--gold); letter-spacing: 2px; line-height: 1;
@@ -768,7 +768,7 @@ body::before {
   border-top: 2px solid transparent;
   transition: border-color 0.3s;
 }
-.principle-cell:hover { border-top-color: var(--lime); }
+.principle-cell:hover { border-top-color: var(--green-l); }
 .principle-num { font-family: 'Bebas Neue'; font-size: 36px; color: var(--dim); line-height: 1; margin-bottom: 10px; }
 .principle-title { font-family: 'Barlow Condensed'; font-size: 18px; font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 8px; }
 .principle-body { font-size: 12px; line-height: 1.65; color: var(--muted); }
@@ -909,7 +909,7 @@ footer {
   color: var(--muted); text-decoration: none; transition: color 0.2s; cursor: pointer;
   background: none; border: none; font-family: 'Barlow';
 }
-.footer-social:hover { color: var(--lime); }
+.footer-social:hover { color: var(--green-l); }
 
 /* ═══════════════════════════════════════
    UTILITIES
@@ -1037,7 +1037,7 @@ footer {
   transition: transform .4s cubic-bezier(.25,.46,.45,.94);
 }
 .ps-cell:hover::after { transform: scaleX(1); }
-.ps-accent-lime::after { background: #00FF41; }
+.ps-accent-lime::after { background: var(--green-l); }
 .ps-accent-gold::after { background: #E8A830; }
 
 /* Brighten gold-band with warm bg */

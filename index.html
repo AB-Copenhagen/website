@@ -1907,129 +1907,170 @@ footer {
     <div>
       <div class="page-eyebrow">AB 1889 Official</div>
       <div class="page-title">Shop</div>
-      <p class="page-subtitle">Kits · Lifestyle · Accessories</p>
+      <p class="page-subtitle">Kits · Hoodies &amp; Shirts · Accessories · Kids</p>
     </div>
-    <div>
-      <button class="btn-lime">New Arrivals →</button>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <a href="https://shop.ab.dk" target="_blank" class="btn-outline" style="font-size:10px;padding:12px 22px;text-decoration:none;">Visit shop.ab.dk ↗</a>
+      <button class="btn-lime">New Season Kits →</button>
     </div>
   </div>
 
-  <div class="filter-tabs">
-    <button class="filter-tab active">All</button>
-    <button class="filter-tab">Kits</button>
-    <button class="filter-tab">Training</button>
-    <button class="filter-tab">Lifestyle</button>
-    <button class="filter-tab">Accessories</button>
-    <button class="filter-tab">Sale</button>
+  <div class="filter-tabs" id="shop-filters">
+    <button class="filter-tab active" onclick="filterShop(this,'all')">All</button>
+    <button class="filter-tab" onclick="filterShop(this,'kit')">2025/26 Kits</button>
+    <button class="filter-tab" onclick="filterShop(this,'hoodies')">Hoodies &amp; Shirts</button>
+    <button class="filter-tab" onclick="filterShop(this,'accessories')">Accessories</button>
+    <button class="filter-tab" onclick="filterShop(this,'sale')">Sale</button>
   </div>
 
-  <div class="product-grid reveal">
-    <!-- Product 1 -->
-    <div class="product-card">
+  <div class="product-grid reveal" id="product-grid">
+
+    <!-- AB Home Jersey 2025/26 -->
+    <a class="product-card" href="https://shop.ab.dk/products/ab-home-shirt-2025-26" target="_blank" data-cat="kit" style="text-decoration:none;">
       <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#0e3d28 0%,#1a5c3a 50%,#0a2018 100%);"></div>
-        <div class="product-placeholder">AB</div>
+        <img src="https://shop.ab.dk/cdn/shop/files/07c46462-1.png?v=1764013171&width=600"
+             alt="AB Home Jersey 2025/26"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
         <div class="product-tag">New</div>
       </div>
       <div class="product-info">
-        <div class="product-cat">Match Kit</div>
-        <div class="product-name">25/26 Home Jersey</div>
-        <div><span class="product-price">DKK 799</span></div>
+        <div class="product-cat">2025/26 Kit</div>
+        <div class="product-name">Home Jersey</div>
+        <div><span class="product-price">599,00 DKK</span></div>
       </div>
-    </div>
-    <!-- Product 2 -->
-    <div class="product-card">
+    </a>
+
+    <!-- AB Away Jersey 2025/26 -->
+    <a class="product-card" href="https://shop.ab.dk/products/ab-away-jersey-2025-26" target="_blank" data-cat="kit" style="text-decoration:none;">
       <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#1f1a10 0%,#2e260f 50%,#111 100%);"></div>
-        <div class="product-placeholder">1889</div>
+        <img src="https://shop.ab.dk/cdn/shop/files/b1b81fa8-WhatsApp-Image-2025-08-14-at-08.18.38-e1755231865387.jpg?v=1764013171&width=600"
+             alt="AB Away Jersey 2025/26"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
+        <div class="product-tag">New</div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">2025/26 Kit</div>
+        <div class="product-name">Away Jersey</div>
+        <div><span class="product-price">599,00 DKK</span></div>
+      </div>
+    </a>
+
+    <!-- Zip Hoodie SALE -->
+    <a class="product-card" href="https://shop.ab.dk/products/zip-hoodie" target="_blank" data-cat="hoodies sale" style="text-decoration:none;">
+      <div class="product-img">
+        <img src="https://shop.ab.dk/cdn/shop/files/26.png?v=1770514567&width=600"
+             alt="Crest Logo Zip Hoodie"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
         <div class="product-tag" style="background:var(--gold);color:#000;">Sale</div>
       </div>
       <div class="product-info">
-        <div class="product-cat">Match Kit</div>
-        <div class="product-name">25/26 Away Jersey</div>
-        <div><span class="product-price">DKK 599</span><span class="product-old-price">DKK 799</span></div>
+        <div class="product-cat">Hoodies &amp; Shirts</div>
+        <div class="product-name">Crest Logo Zip Hoodie</div>
+        <div><span class="product-price">189,50 DKK</span><span class="product-old-price">379,00 DKK</span></div>
       </div>
-    </div>
-    <!-- Product 3 -->
-    <div class="product-card">
+    </a>
+
+    <!-- AB Classic Hoodie -->
+    <a class="product-card" href="https://shop.ab.dk/products/ab-classic-hoodie" target="_blank" data-cat="hoodies" style="text-decoration:none;">
       <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#0a0a0a 0%,#1c1c1c 50%,#050505 100%);"></div>
-        <div class="product-placeholder">AB</div>
+        <img src="https://shop.ab.dk/cdn/shop/files/a2.png?v=1770514188&width=600"
+             alt="AB Classic Hoodie"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
       </div>
       <div class="product-info">
-        <div class="product-cat">Lifestyle</div>
-        <div class="product-name">AB 1889 Hoodie — Black</div>
-        <div><span class="product-price">DKK 649</span></div>
+        <div class="product-cat">Hoodies &amp; Shirts</div>
+        <div class="product-name">Classic Hoodie</div>
+        <div><span class="product-price">499,00 DKK</span></div>
       </div>
-    </div>
-    <!-- Product 4 -->
-    <div class="product-card">
+    </a>
+
+    <!-- AB Classic Sweatshirt -->
+    <a class="product-card" href="https://shop.ab.dk/products/ab-classic-sweatshirt" target="_blank" data-cat="hoodies" style="text-decoration:none;">
       <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#0d2c1a 0%,#1a4a2a 50%,#061510 100%);"></div>
-        <div class="product-placeholder">AB</div>
-        <div class="product-tag">New</div>
+        <img src="https://shop.ab.dk/cdn/shop/files/M1.png?v=1770502660&width=600"
+             alt="AB Classic Sweatshirt"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
       </div>
       <div class="product-info">
-        <div class="product-cat">Accessories</div>
-        <div class="product-name">AB Gladsaxe Holdall Bag</div>
-        <div><span class="product-price">DKK 499</span></div>
+        <div class="product-cat">Hoodies &amp; Shirts</div>
+        <div class="product-name">Classic Sweatshirt</div>
+        <div><span class="product-price">399,00 DKK</span></div>
       </div>
-    </div>
-    <!-- Product 5 -->
-    <div class="product-card">
+    </a>
+
+    <!-- AB Scarf -->
+    <a class="product-card" href="https://shop.ab.dk/products/ab-scarf" target="_blank" data-cat="accessories" style="text-decoration:none;">
       <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#c9922a 0%,#a07020 50%,#7a5010 100%);"></div>
-        <div class="product-placeholder">1889</div>
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Accessories</div>
-        <div class="product-name">1889 Cap — Gold / White</div>
-        <div><span class="product-price">DKK 349</span></div>
-      </div>
-    </div>
-    <!-- Product 6 -->
-    <div class="product-card">
-      <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#f5f2ec 0%,#e8e4d8 50%,#d8d0c0 100%);"></div>
-        <div class="product-placeholder" style="color:rgba(0,0,0,0.05);">AB</div>
-      </div>
-      <div class="product-info">
-        <div class="product-cat">Lifestyle</div>
-        <div class="product-name">Academy Tee — Off White</div>
-        <div><span class="product-price">DKK 299</span></div>
-      </div>
-    </div>
-    <!-- Product 7 -->
-    <div class="product-card">
-      <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#00ff41 0%,#00b32d 50%,#006618 100%);"></div>
-        <div class="product-placeholder" style="color:rgba(0,0,0,0.08);">AB</div>
-        <div class="product-tag">Limited</div>
+        <img src="https://shop.ab.dk/cdn/shop/files/scarf-5.webp?v=1764637784&width=600"
+             alt="AB Scarf"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
       </div>
       <div class="product-info">
         <div class="product-cat">Accessories</div>
-        <div class="product-name">AB Socks — Green / Lime</div>
-        <div><span class="product-price">DKK 149</span></div>
+        <div class="product-name">AB Scarf</div>
+        <div><span class="product-price">149,00 DKK</span></div>
       </div>
-    </div>
-    <!-- Product 8 -->
-    <div class="product-card">
+    </a>
+
+    <!-- AB 1889 Beanie -->
+    <a class="product-card" href="https://shop.ab.dk/products/ab-beanie" target="_blank" data-cat="accessories" style="text-decoration:none;">
       <div class="product-img">
-        <div class="product-color-swatch" style="background:linear-gradient(135deg,#0d2c1a 0%,#c9922a 100%);"></div>
-        <div class="product-placeholder">1889</div>
+        <img src="https://shop.ab.dk/cdn/shop/files/hat1.png?v=1770630398&width=600"
+             alt="AB 1889 Beanie"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
       </div>
       <div class="product-info">
-        <div class="product-cat">Lifestyle</div>
-        <div class="product-name">Metallic Holdall — Green Chrome</div>
-        <div><span class="product-price">DKK 699</span></div>
+        <div class="product-cat">Accessories</div>
+        <div class="product-name">AB 1889 Beanie</div>
+        <div><span class="product-price">149,00 DKK</span></div>
       </div>
-    </div>
+    </a>
+
+    <!-- Kids placeholder card linking to kids collection -->
+    <a class="product-card" href="https://shop.ab.dk/collections/youth-and-kids" target="_blank" data-cat="kids" style="text-decoration:none;background:var(--green-d);">
+      <div class="product-img" style="background:linear-gradient(135deg,var(--green-d),var(--green));display:flex;align-items:center;justify-content:center;">
+        <img src="https://shop.ab.dk/cdn/shop/files/Untitled_design_-_2026-01-31T221315.594.png?v=1769915688&width=600"
+             alt="Kids Collection"
+             loading="lazy"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94);"
+             class="prod-img">
+        <div class="product-tag" style="background:var(--lime);color:#000;">Kids</div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">Youth &amp; Kids</div>
+        <div class="product-name">Kids Collection</div>
+        <div style="font-size:11px;color:var(--muted);">View full range →</div>
+      </div>
+    </a>
+
   </div>
 
-  <div style="text-align:center;padding:60px;border-top:1px solid var(--border);margin-top:2px;">
-    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">Official Store</div>
-    <div style="font-family:'Barlow Condensed';font-size:40px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:12px;">Free Shipping Over DKK 500</div>
-    <div style="font-size:13px;color:var(--muted);">Denmark · Sweden · Norway · Germany · United Kingdom · United States</div>
+  <!-- Hover zoom CSS for real images -->
+  <style>
+    .product-card:hover .prod-img { transform: scale(1.06); }
+    .product-card { cursor: pointer; }
+  </style>
+
+  <!-- CTA footer -->
+  <div style="text-align:center;padding:60px 40px;border-top:1px solid var(--border);margin-top:2px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Official Store</div>
+    <div style="font-family:'Barlow Condensed';font-size:42px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:14px;">Free Shipping Over DKK 500</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:28px;">Denmark · Sweden · Norway · Germany · United Kingdom · United States</div>
+    <a href="https://shop.ab.dk/collections/all-items" target="_blank" class="btn-lime" style="text-decoration:none;display:inline-flex;">Browse Full Store ↗</a>
   </div>
 
 </section>

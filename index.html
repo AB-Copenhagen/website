@@ -186,19 +186,125 @@ body::before {
 .hero {
   position: relative;
   height: calc(100vh - var(--nav-h));
-  min-height: 640px;
+  min-height: 680px;
   overflow: hidden;
   display: flex; align-items: flex-end;
 }
 
-.hero-bg {
-  position: absolute; inset: 0;
-  background: linear-gradient(125deg, #051a0d 0%, #020a06 45%, var(--bg) 100%);
+/* ── VIDEO BACKGROUND ── */
+.hero-video-wrap {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
 }
+.hero-video {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto; object-fit: cover;
+}
+/* fallback poster shown until video loads */
+.hero-video-wrap::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(125deg, #051a0d 0%, #0a2010 40%, #020a06 100%);
+  z-index: -1;
+}
+/* cinematic colour grade */
+.hero-video-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to top,
+      rgba(6,6,6,1)    0%,
+      rgba(6,6,6,.75)  16%,
+      rgba(6,6,6,.22)  44%,
+      rgba(6,6,6,.06)  66%,
+      rgba(6,6,6,.28) 100%),
+    linear-gradient(to right,
+      rgba(6,6,6,.58) 0%,
+      transparent     52%,
+      rgba(6,6,6,.28) 100%);
+}
+.hero-video-tint {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(135deg,
+    rgba(14,61,47,.32) 0%, transparent 52%, rgba(42,30,8,.18) 100%);
+  mix-blend-mode: multiply;
+}
+/* subtle scanlines — TikTok-ish texture */
+.hero-video-scan {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,.028) 2px, rgba(0,0,0,.028) 4px
+  );
+}
+/* TikTok-style progress bar */
+.hero-progress {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 9;
+}
+.hero-progress-bar {
+  height: 100%; background: var(--gold);
+  animation: progressPlay 14.8s linear infinite;
+}
+@keyframes progressPlay { from{width:0%} to{width:100%} }
+/* clip dots */
+.hero-clip-dots {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  z-index: 9; display: flex; gap: 5px; align-items: center;
+}
+.clip-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(255,255,255,.28);
+}
+.clip-dot.active { width: 14px; border-radius: 3px; background: #fff; }
+/* mute btn */
+.hero-mute-btn {
+  position: absolute; top: 18px; right: 24px; z-index: 9;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(0,0,0,.42); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 15px; color: #fff; transition: background .2s;
+}
+.hero-mute-btn:hover { background: rgba(0,0,0,.65); }
+/* TikTok right-rail action buttons */
+.hero-tiktok-rail {
+  position: absolute; right: 24px; bottom: 110px; z-index: 8;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+.ttr-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  cursor: pointer; transition: transform .2s;
+}
+.ttr-btn:hover { transform: scale(1.1); }
+.ttr-icon {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(255,255,255,.11); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.16);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #fff; transition: background .2s;
+}
+.ttr-btn:hover .ttr-icon { background: rgba(255,255,255,.22); }
+.ttr-label { font-size: 10px; color: rgba(255,255,255,.5); letter-spacing: .5px; }
+/* TikTok caption strip */
+.hero-caption {
+  position: absolute; left: 0; right: 80px; bottom: 32px;
+  z-index: 8; padding: 0 36px;
+}
+.hero-caption-handle {
+  font-size: 13px; font-weight: 700; color: #fff;
+  margin-bottom: 4px; display: flex; align-items: center; gap: 8px;
+}
+.verified-badge {
+  width: 16px; height: 16px; border-radius: 50%; background: var(--green);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 9px; flex-shrink: 0;
+}
+.hero-caption-text { font-size: 13px; color: rgba(255,255,255,.78); line-height: 1.45; max-width: 500px; }
+.hero-caption-tags { margin-top: 7px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.5); }
+.hero-caption-tags span { color: rgba(255,255,255,.8); margin-right: 8px; }
 
 /* Animated grid */
 .hero-grid {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
   background-image:
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -212,7 +318,7 @@ body::before {
 
 /* Radial glow */
 .hero-glow {
-  position: absolute;
+  position: absolute; z-index: 5; pointer-events: none;
   width: 800px; height: 800px;
   background: radial-gradient(circle, rgba(201,146,42,0.09) 0%, transparent 70%);
   top: -200px; right: -100px;
@@ -225,7 +331,7 @@ body::before {
 
 /* Giant bg type */
 .hero-bg-type {
-  position: absolute;
+  position: absolute; z-index: 5;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 52vw; line-height: 0.75;
   color: transparent;
@@ -236,8 +342,8 @@ body::before {
 }
 
 .hero-content {
-  position: relative; z-index: 4;
-  width: 100%; padding: 0 70px 72px;
+  position: relative; z-index: 7;
+  width: 100%; padding: 0 70px 110px;
   display: grid;
   grid-template-columns: 1fr 380px;
   gap: 80px;
@@ -1091,68 +1197,132 @@ footer {
 
   <!-- Hero -->
   <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-bg-type">AB</div>
 
-    <div class="hero-content">
-      <div class="hero-main">
-        <div class="hero-eyebrow">
-          <div class="hero-eyebrow-badge">
-            <span class="live-dot"></span>
-            Season 2025/26 · Week 22
-          </div>
-        </div>
-        <div class="hero-title">
-          <span class="line-dim">Akademisk Boldklub</span>
-          Spark<br>
-          Becomes<br>
-          <span class="line-accent">Intention</span>
-        </div>
-        <div class="hero-actions">
-          <button class="btn-lime" onclick="showPage('matches')">Match Highlights →</button>
-          <button class="btn-outline" onclick="showPage('club')">Our Story</button>
+  <!-- ── PROGRESS BAR ── -->
+  <div class="hero-progress"><div class="hero-progress-bar"></div></div>
+
+  <!-- ── VIDEO ── -->
+  <div class="hero-video-wrap">
+    <!--
+      DROP YOUR VIDEO FILE HERE.
+      Recommended: 1920×1080 mp4, 20–40s loop, no audio required.
+      Replace BOTH src attributes below with your file path or CDN URL.
+      Example: src="https://cdn.ab1889.dk/hero/matchday-loop.mp4"
+    -->
+    <video class="hero-video"
+      autoplay muted loop playsinline
+      id="heroVideo"
+      poster="">
+      <source src="hero-video-compressed.mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-video-tint"></div>
+    <div class="hero-video-scan"></div>
+  </div>
+
+  <!-- ── MUTE TOGGLE ── -->
+  <button class="hero-mute-btn" id="muteBtn" onclick="toggleMute()" title="Toggle sound">🔇</button>
+
+  <!-- ── ANIMATED GRID ── -->
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-bg-type">AB</div>
+
+  <!-- ── TIKTOK RIGHT RAIL ── -->
+  <div class="hero-tiktok-rail">
+    <div class="ttr-btn" onclick="showPage('matches')">
+      <div class="ttr-icon">▶</div>
+      <span class="ttr-label">Watch</span>
+    </div>
+    <div class="ttr-btn">
+      <div class="ttr-icon">♡</div>
+      <span class="ttr-label">12.4K</span>
+    </div>
+    <div class="ttr-btn">
+      <div class="ttr-icon">↗</div>
+      <span class="ttr-label">Share</span>
+    </div>
+    <div class="ttr-btn" onclick="showPage('shop')">
+      <div class="ttr-icon">🛍</div>
+      <span class="ttr-label">Shop</span>
+    </div>
+  </div>
+
+  <!-- ── TIKTOK CAPTION ── -->
+  <div class="hero-caption">
+    <div class="hero-caption-handle">
+      <span class="verified-badge">✓</span>
+      @abfodbold
+    </div>
+    <div class="hero-caption-text">The boys are back 🟢🔥 Matchday energy at Gladsaxe — nothing like it. Pre-season done, season starts NOW. #AB1889</div>
+    <div class="hero-caption-tags">
+      <span>#AB1889</span><span>#Superliga</span><span>#Gladsaxe</span><span>#DanskFodbold</span>
+    </div>
+  </div>
+
+  <!-- ── CLIP DOTS ── -->
+  <div class="hero-clip-dots">
+    <div class="clip-dot active"></div>
+    <div class="clip-dot"></div>
+    <div class="clip-dot"></div>
+  </div>
+
+  <!-- ── MAIN HERO CONTENT ── -->
+  <div class="hero-content">
+    <div class="hero-main">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-badge">
+          <span class="live-dot"></span>
+          Season 2025/26 · Week 22
         </div>
       </div>
+      <div class="hero-title">
+        <span class="line-dim">Akademisk Boldklub</span>
+        Spark<br>
+        Becomes<br>
+        <span class="line-accent">Intention</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-lime" onclick="showPage('matches')">Match Highlights →</button>
+        <button class="btn-outline" onclick="showPage('club')">Our Story</button>
+      </div>
+    </div>
 
-      <div class="hero-sidebar">
-        <!-- Next match -->
-        <div class="match-card">
-          <div class="match-card-header">
-            <span class="comp-tag">Superliga · Upcoming</span>
-            <span class="match-time">Sat 1 Mar · 15:00 CET</span>
+    <div class="hero-sidebar">
+      <div class="match-card">
+        <div class="match-card-header">
+          <span class="comp-tag">Superliga · Upcoming</span>
+          <span class="match-time">Sat 1 Mar · 15:00 CET</span>
+        </div>
+        <div class="scoreline">
+          <div class="team-block">
+            <span class="team-abbr home">AB</span>
+            <span class="team-name-sm">Akademisk BK</span>
           </div>
-          <div class="scoreline">
-            <div class="team-block">
-              <span class="team-abbr home">AB</span>
-              <span class="team-name-sm">Akademisk BK</span>
-            </div>
-            <div class="vs-display">vs</div>
-            <div class="team-block">
-              <span class="team-abbr">BIF</span>
-              <span class="team-name-sm">Brøndby IF</span>
-            </div>
-          </div>
-          <div class="match-footer">
-            <span>Gladsaxe Stadion</span>
-            <span style="color:var(--lime);font-weight:700;">Buy Tickets →</span>
+          <div class="vs-display">vs</div>
+          <div class="team-block">
+            <span class="team-abbr">BIF</span>
+            <span class="team-name-sm">Brøndby IF</span>
           </div>
         </div>
-        <!-- Last result -->
-        <div class="result-mini">
-          <div>
-            <div class="result-mini-label">Last Result · 22 Feb</div>
-            <div class="result-mini-teams">AB vs FC Copenhagen</div>
-          </div>
-          <div class="result-mini-r">
-            <div class="result-mini-score">2 – 1</div>
-            <div class="result-mini-sub">Full Time · Superliga</div>
-          </div>
+        <div class="match-footer">
+          <span>Gladsaxe Stadion</span>
+          <span style="color:var(--lime);font-weight:700;">Buy Tickets →</span>
+        </div>
+      </div>
+      <div class="result-mini">
+        <div>
+          <div class="result-mini-label">Last Result · 22 Feb</div>
+          <div class="result-mini-teams">AB vs FC Copenhagen</div>
+        </div>
+        <div class="result-mini-r">
+          <div class="result-mini-score">2 – 1</div>
+          <div class="result-mini-sub">Full Time · Superliga</div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Ticker -->
   <div class="ticker-wrap">
@@ -1182,7 +1352,7 @@ footer {
       <div style="position:absolute;inset:0;background:rgba(26,107,82,.12);mix-blend-mode:multiply;z-index:1;"></div>
       <div class="ps-body">
         <span class="ps-tag" style="color:#00FF41;">Match Report</span>
-        <div class="ps-title" style="font-size:30px;">AB 2–1 FC Copenhagen — The Squad Celebrates</div>
+        <div class="ps-title" style="font-size:30px;">The Boys Are Back — Pre-Season Highlights</div>
         <div class="ps-meta">22 Feb 2026 · Superliga · Gladsaxe Stadion</div>
       </div>
     </div>
